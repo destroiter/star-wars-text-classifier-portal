@@ -1,0 +1,12 @@
+<div [formGroup]="filterform">
+    Класс текста:
+    <select formControlName="filterTextClassControl">
+        <option value=""></option>
+        <option *ngFor="let textClasse of textClasses" [ngValue]="textClasse.value">{{ textClasse.name }}</option>
+    </select>
+</div>
+<div *ngIf="articles != null">
+    <div *ngFor="let article of articles">
+        <li><a href="/articles/id/{{ article.id }}">{{ article.title }}</a></li>
+    </div>
+</div>

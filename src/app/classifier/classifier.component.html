@@ -1,0 +1,7 @@
+<form [formGroup]="textEditorForm" (ngSubmit)="submit()">
+    <textarea wrap="soft" placeholder="Введите текст для проверки" formControlName="textEditorControl"></textarea>
+    <button type="submit">Проверка</button>
+</form>
+<div *ngIf="result != null">
+    <span>Резузультат проверки: текст принадлежит к классу {{ result | textClassName }}</span>
+</div>
