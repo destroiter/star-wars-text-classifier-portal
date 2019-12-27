@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.serverService.getArticle({ id: params['articleId'] })
+      this.serverService.getArticle({ id: params.articleId })
         .subscribe(response => this.article = response.article);
     });
   }

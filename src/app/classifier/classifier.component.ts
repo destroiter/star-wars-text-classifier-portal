@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { TextClass } from '../share/text-class.enum';
 import { ServerService } from '../share/server.service';
@@ -20,12 +20,12 @@ export class ClassifierComponent implements OnInit {
 
   ngOnInit(): void {
     this.textEditorForm = new FormGroup({
-        'textEditorControl': new FormControl()
+        textEditorControl: new FormControl('', Validators.required)
     });
   }
 
   public submit(): void {
-    this.serverService.classify({ text: this.textEditorForm.controls['textEditorControl'].value })
+    this.serverService.classify({ text: this.textEditorForm.controls.textEditorControl.value })
       .subscribe(response => this.result = response.textClass);
   }
 }

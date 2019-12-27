@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ClassifierComponent } from './classifier/classifier.component';
-import { ArticlesComponent } from './articles/articles.component';
+import { ArticleListComponent } from './articles/article-list.component';
 import { ArticleComponent } from './articles/article.component';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { ArticleComponent } from './articles/article.component';
                     },
                     {
                       path: 'all',
-                      component: ArticlesComponent
+                      component: ArticleListComponent
                     },
                     {
                       path: 'id',

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClassifierComponent } from './classifier/classifier.component';
 import { ServerService } from './share/server.service';
-import { ArticlesComponent } from './articles/articles.component';
+import { ArticleListComponent } from './articles/article-list.component';
 import { ArticleComponent } from './articles/article.component';
 import { TextClassNamePipe } from './share/pipes/text-class-name.pipe';
 
@@ -16,7 +16,7 @@ import { TextClassNamePipe } from './share/pipes/text-class-name.pipe';
   declarations: [
     AppComponent,
     ClassifierComponent,
-    ArticlesComponent,
+    ArticleListComponent,
     ArticleComponent,
     TextClassNamePipe
   ],

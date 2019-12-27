@@ -8,11 +8,11 @@ import { TextClass } from '../share/text-class.enum';
 import { TextClassNamePipe } from '../share/pipes/text-class-name.pipe';
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss']
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
   public articles: ArticleShortRecordResponse[] | null = null;
 
   public textClasses: { value: string, name: string }[] = Object.values(TextClass)
@@ -28,22 +28,22 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.filterform = new FormGroup({
-      'filterTextClassControl': new FormControl()
+      filterTextClassControl: new FormControl()
     });
 
     this.route.queryParams.subscribe((params: Params) => {
-      const textClassParam: TextClass = params['class'];
-      this.filterform.controls['filterTextClassControl'].setValue(textClassParam);
+      const textClassParam: TextClass = params.class;
+      this.filterform.controls.filterTextClassControl.setValue(textClassParam);
       this.serverService.getAllArticles({ class: textClassParam })
         .subscribe(response => this.articles = response.articles);
     });
 
-    this.filterform.controls['filterTextClassControl'].valueChanges
-      .subscribe((value: TextClass) => {
+    this.filterform.controls.filterTextClassControl.valueChanges
+      .subscribe((value: string) => {
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: {
-            class: value
+            class: value != null && value.length > 0 ? value : null
           }
         });
       });

@@ -6,7 +6,10 @@
     </select>
 </div>
 <div *ngIf="articles != null">
+    <div>
+        <span>Колличество статей: {{ articles.length }}</span>
+    </div>
     <div *ngFor="let article of articles">
-        <li><a href="/articles/id/{{ article.id }}">{{ article.title }}</a></li>
+        <li><a routerLink="/articles/id/{{ article.id }}">{{ article.title }}</a></li>
     </div>
 </div>
